@@ -11,11 +11,13 @@ variable "account_id" {
 variable "display_name" {
   description = "Service Account Display Name"
   type        = string
+  default = ""
 }
 
 variable "description" {
   description = "Service Account Description"
   type        = string
+  default = ""
 }
 
 variable "roles" {
