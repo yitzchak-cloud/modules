@@ -90,6 +90,10 @@ resource "google_cloud_run_v2_service" "this" {
   }
 }
 
+data "google_project" "project" {
+    project_id = var.project_id
+}
+
 resource "google_cloud_run_v2_service_iam_member" "iap_invoker" {
   count = var.iap_enabled ? 1 : 0
 
@@ -98,5 +102,5 @@ resource "google_cloud_run_v2_service_iam_member" "iap_invoker" {
   name     = google_cloud_run_v2_service.this.name
 
   role   = "roles/run.invoker"
-  member = "serviceAccount:service-${var.project_number}@gcp-sa-iap.iam.gserviceaccount.com"
+  member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-iap.iam.gserviceaccount.com"
 }

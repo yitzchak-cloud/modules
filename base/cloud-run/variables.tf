@@ -5,11 +5,6 @@ variable "project_id" {
   description = "GCP Project ID"
 }
 
-variable "project_number" {
-  type        = string
-  description = "GCP Project Number"
-}
-
 variable "service_name" {
   type        = string
   description = "Cloud Run service name"
